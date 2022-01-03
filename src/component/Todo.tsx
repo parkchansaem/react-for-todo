@@ -10,11 +10,24 @@ function Todo({ text, category, id }: ITodo) {
       const targetIndex = oldTodo.findIndex((Todo) => Todo.id === id);
       const newTodos = { text, id, category: newCategory };
       console.log(newTodos);
-      return [
+      const result = [
         ...oldTodo.slice(0, targetIndex),
         newTodos,
         ...oldTodo.slice(targetIndex + 1),
       ];
+      localStorage.setItem("toDos", JSON.stringify(result));
+      return result;
+    });
+  };
+  const ondeleteclick = () => {
+    setTodo((oldtodo) => {
+      const targetIndex = oldtodo.findIndex((todo) => todo.id === id);
+      const result = [
+        ...oldtodo.slice(0, targetIndex),
+        ...oldtodo.slice(targetIndex + 1),
+      ];
+      localStorage.setItem("toDos", JSON.stringify(result));
+      return result;
     });
   };
 
@@ -30,6 +43,7 @@ function Todo({ text, category, id }: ITodo) {
       {category !== Category.Done && (
         <button onClick={() => onclick(Category.Done)}>Done</button>
       )}
+      <button onClick={ondeleteclick}>Delete</button>
     </li>
   );
 }

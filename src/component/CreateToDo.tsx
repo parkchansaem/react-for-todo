@@ -11,10 +11,11 @@ function CreateToDo() {
   const category = useRecoilValue(categoryState);
   const { register, handleSubmit, setValue } = useForm<Iform>();
   const onvalue = ({ todo }: Iform) => {
-    setToDos((oldToDos) => [
-      { text: todo, id: Date.now(), category },
-      ...oldToDos,
-    ]);
+    setToDos((oldToDos) => {
+      const result = [{ text: todo, id: Date.now(), category }, ...oldToDos];
+      localStorage.setItem("toDos", JSON.stringify(result));
+      return result;
+    });
     setValue("todo", "");
   };
   return (
