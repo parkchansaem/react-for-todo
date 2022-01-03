@@ -33,7 +33,7 @@ function Todolist() {
   };
   return (
     <div>
-      <h1>to Dos</h1>
+      <h1>To Dos</h1>
       <hr />
       <form>
         <select value={category} onInput={oninput}>
