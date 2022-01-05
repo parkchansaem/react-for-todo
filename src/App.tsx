@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import App2 from "./App2";
 import Todolist from "./Todolist";
 
 const GlobalStlye = createGlobalStyle`
@@ -69,7 +70,7 @@ function App() {
   return (
     <>
       <GlobalStlye />
-      <Todolist />
+      <App2 />
     </>
   );
 }
