@@ -70,7 +70,7 @@ function App() {
   return (
     <>
       <GlobalStlye />
-      <App2 />
+      <Todolist />
     </>
   );
 }
