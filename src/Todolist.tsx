@@ -37,9 +37,10 @@ function Todolist() {
       <hr />
       <form>
         <select value={category} onInput={oninput}>
-          <option value={Category.To_Do}>To_Do</option>{" "}
-          <option value={Category.Doing}>Doing</option>{" "}
-          <option value={Category.Done}>Done</option>
+          <option value={Category.To_Do}>{Category.Done}</option>{" "}
+          <option value={Category.Doing}>{Category.Doing}</option>{" "}
+          <option value={Category.Done}>{Category.Done}</option>
+          <option value={Category.Action}>{Category.Action}</option>
         </select>
       </form>
       <CreateToDo />

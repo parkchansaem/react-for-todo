@@ -43,6 +43,9 @@ function Todo({ text, category, id }: ITodo) {
       {category !== Category.Done && (
         <button onClick={() => onclick(Category.Done)}>Done</button>
       )}
+      {category !== Category.Action && (
+        <button onClick={() => onclick(Category.Action)}>Action</button>
+      )}
       <button onClick={ondeleteclick}>Delete</button>
     </li>
   );
