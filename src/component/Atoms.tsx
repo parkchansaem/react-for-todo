@@ -4,9 +4,15 @@ export enum Category {
   "To_Do" = "To_Do",
   "Doing" = "Doing",
   "Done" = "Done",
-  "Action" = "Action",
 }
-
+export interface IcategoryState {
+  text: string;
+  id: number;
+}
+export const customCategoryState = atom<IcategoryState[]>({
+  key: "customCategoryState",
+  default: [],
+});
 export interface ITodo {
   text: string;
   id: number;
@@ -15,7 +21,7 @@ export interface ITodo {
 
 export const categoryState = atom<Category>({
   key: "category",
-  default: Category.To_Do,
+  default: Category.Done,
 });
 
 let output = localStorage.getItem("toDos");

@@ -3,10 +3,12 @@ import CreateToDo from "./component/CreateToDo";
 import {
   Category,
   categoryState,
+  customCategoryState,
   toDoSelector,
   toDostate,
 } from "./component/Atoms";
 import Todo from "./component/Todo";
+import CreateCategory from "./component/CreateCategory";
 
 function Todolist() {
   //   const {
@@ -27,10 +29,13 @@ function Todolist() {
   //     }
   // setError("extraerror", { message: "server down" });
   const todos = useRecoilValue(toDoSelector);
+  const customcategoryState = useRecoilValue(customCategoryState);
   const [category, setCategory] = useRecoilState(categoryState);
   const oninput = (event: React.FormEvent<HTMLSelectElement>) => {
     setCategory(event.currentTarget.value as any);
   };
+  console.log(customcategoryState);
+  const key = ["1", "2", "3"];
   return (
     <div>
       <h1>To Dos</h1>
@@ -40,10 +45,16 @@ function Todolist() {
           <option value={Category.To_Do}>{Category.Done}</option>{" "}
           <option value={Category.Doing}>{Category.Doing}</option>{" "}
           <option value={Category.Done}>{Category.Done}</option>
-          <option value={Category.Action}>{Category.Action}</option>
+          {customcategoryState.map((key) => (
+            <option value={key.text} key={key.id}>
+              {key.text}
+            </option>
+          ))}
         </select>
       </form>
+      <CreateCategory />
       <CreateToDo />
+      <span>{category}</span>
       {todos.map((todo) => (
         <Todo key={todo.id} {...todo} />
       ))}
